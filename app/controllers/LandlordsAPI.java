@@ -17,13 +17,13 @@ public class LandlordsAPI extends Controller
   .setExclusionStrategies(new GsonStrategy())
   .create();
 
-  public static void getAllTweeters()
+  public static void getAllLandlords()
   {
-    List<Landlord> Tweeters = Landlord.findAll();
-    renderJSON(gson.toJson(Tweeters));
+    List<Landlord> Landlords = Landlord.findAll();
+    renderJSON(gson.toJson(Landlords));
   }
 
-  public static void getTweeter(String id)
+  public static void getLandlorder(String id)
   {
     Landlord landlord = Landlord.findById(id);
     if (landlord == null)
@@ -36,7 +36,7 @@ public class LandlordsAPI extends Controller
     }
   }
 
-  public static void createTweeter(JsonElement body)
+  public static void createLandlord(JsonElement body)
   {
     Landlord landlord = gson.fromJson(body.toString(), Landlord.class);
     landlord.save();
@@ -47,7 +47,7 @@ public class LandlordsAPI extends Controller
    * Update fields in existing landlord (excluding id).
    * @param body
    */
-  public static void updateTweeter(JsonElement body)
+  public static void updateLandlord(JsonElement body)
   {
     Landlord updatedLandlord = gson.fromJson(body.toString(), Landlord.class);
     Landlord landlord = Landlord.findById(updatedLandlord.uuid);
@@ -57,7 +57,7 @@ public class LandlordsAPI extends Controller
   }
 
 
-  public static void deleteTweeter(String uuid)
+  public static void deleteLandlord(String uuid)
   {
     Landlord landlord = Landlord.findById(uuid);
     if (landlord == null)
@@ -72,22 +72,22 @@ public class LandlordsAPI extends Controller
   }
   
   /**
-   * This method deletes all tweeters and residences that it owns.
+   * This method deletes all landlords and residences that it owns.
    */
-  public static void deleteAllTweeters()
+  public static void deleteAllLandlords()
   {
-    List<Landlord> tweeters = Landlord.findAll();
-    int numberTweeters = tweeters.size();
-    for(int i = 0; i < numberTweeters; i += 1)
+    List<Landlord> landlords = Landlord.findAll();
+    int numberLandlords = landlords.size();
+    for(int i = 0; i < numberLandlords; i += 1)
     {
-      Landlord landlord = tweeters.get(i);
+      Landlord landlord = landlords.get(i);
       List<Residence> residences = landlord.residences;
       for(int j = 0; j < residences.size(); j += 1)
       {
-        Residence tweet = Residence.findById(residences.get(j).uuid);
-        landlord.residences.remove(tweet);
+        Residence residence = Residence.findById(residences.get(j).uuid);
+        landlord.residences.remove(residence);
         landlord.save();
-        tweet.delete();   
+        residence.delete();   
       }
       landlord.delete();
     }

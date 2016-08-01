@@ -21,6 +21,11 @@ public class Landlord extends GenericModel {
 	public String firstName;
 	public String lastName;
 
+	public Landlord (String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 	public void update(Landlord other) {
 		this.firstName = other.firstName;
 		this.lastName = other.lastName;
