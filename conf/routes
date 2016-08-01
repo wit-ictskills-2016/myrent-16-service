@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+# Tweeter (the user)
+GET     /api/tweeters                              TweetersAPI.getAllTweeters
+GET     /api/tweeters/{id}                         TweetersAPI.getTweeter
+POST    /api/tweeters                              TweetersAPI.createTweeter
+PUT     /api/tweeters                              TweetersAPI.updateTweeter
+DELETE  /api/tweeters/{id}                         TweetersAPI.deleteTweeter
+DELETE  /api/tweeters                              TweetersAPI.deleteAllTweeters
+
+# Tweet
+GET     /api/tweets                                TweetsAPI.getAllTweets
+DELETE  /api/tweets                                TweetsAPI.deleteAllTweets
+GET     /api/tweeters/{id}/tweets                  TweetsAPI.getTweets
+GET     /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.getTweet
+POST    /api/tweeters/{id}/tweets                  TweetsAPI.createTweet
+DELETE  /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.deleteTweet
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
