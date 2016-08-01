@@ -20,13 +20,13 @@ public class ResidencesAPI extends Controller
 
  /**
   * 
-  * @param uuid
+  * @param id
   * @param body
   */
-  public static void createResidence(String uuid, JsonElement body)
+  public static void createResidence(String id, JsonElement body)
   {
     Residence residence = gson.fromJson(body.toString(), Residence.class);
-    Landlord landlord = Landlord.findById(uuid);
+    Landlord landlord = Landlord.findById(id);
     landlord.residences.add(residence);
     residence.landlord = landlord;
     residence.save();
@@ -41,11 +41,11 @@ public class ResidencesAPI extends Controller
   
   /**
    * 
-   * @param uuid : The uuid of the landlord (the residence list owner)
+   * @param id : The id of the landlord (the residence list owner)
    */
-  public static void getResidences(String uuid)
+  public static void getResidences(String id)
   {
-    Landlord landlord = Landlord.findById(uuid);
+    Landlord landlord = Landlord.findById(id);
     if (landlord == null)
     {
       notFound();
@@ -55,11 +55,10 @@ public class ResidencesAPI extends Controller
  
   /**
    * 
-   * @param uuid : The landlord uuid. This is redundant here since 
-   *             residence uuid a uuid and so unique.
-   * @param residenceId : The uuid of residence sought.
+   * @param id
+   * @param residenceId
    */
-  public static void getResidence (String uuid, String residenceId)
+  public static void getResidence (String id, String residenceId)
   {
    Residence residence = Residence.findById(residenceId);
    if (residence == null)
@@ -73,10 +72,10 @@ public class ResidencesAPI extends Controller
   }
  /**
   *  
-  * @param uuid
+  * @param id
   * @param residenceId
   */
-  public static void deleteResidence(String uuid, String residenceId)
+  public static void deleteResidence(String id, String residenceId)
   {
     Residence residence = Residence.findById(residenceId);
     if (residence == null)

@@ -5,21 +5,21 @@
 # Home page
 GET     /                                       Application.index
 
-# Tweeter (the user)
-GET     /api/tweeters                              TweetersAPI.getAllTweeters
-GET     /api/tweeters/{id}                         TweetersAPI.getTweeter
-POST    /api/tweeters                              TweetersAPI.createTweeter
-PUT     /api/tweeters                              TweetersAPI.updateTweeter
-DELETE  /api/tweeters/{id}                         TweetersAPI.deleteTweeter
-DELETE  /api/tweeters                              TweetersAPI.deleteAllTweeters
+# Landlorder (the user)
+GET     /api/landlords                              LandlordsAPI.getAllLandlords
+GET     /api/landlords/{id}                         LandlordsAPI.getLandlord
+POST    /api/landlords                              LandlordsAPI.createLandlord
+PUT     /api/landlords                              LandlordsAPI.updateLandlord
+DELETE  /api/landlords/{id}                         LandlordsAPI.deleteLandlord
+DELETE  /api/landlords                              LandlordsAPI.deleteAllLandlords
 
 # Tweet
-GET     /api/tweets                                TweetsAPI.getAllTweets
-DELETE  /api/tweets                                TweetsAPI.deleteAllTweets
-GET     /api/tweeters/{id}/tweets                  TweetsAPI.getTweets
-GET     /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.getTweet
-POST    /api/tweeters/{id}/tweets                  TweetsAPI.createTweet
-DELETE  /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.deleteTweet
+GET     /api/residences                                ResidencesAPI.getAllResidences
+DELETE  /api/residences                                ResidencesAPI.deleteAllResidences
+GET     /api/landlords/{id}/residences                 ResidencesAPI.getResidences
+GET     /api/landlords/{id}/residences/{residenceId}   ResidencesAPI.getResidence
+POST    /api/landlords/{id}/residences                 ResidencesAPI.createResidence
+DELETE  /api/landlords/{id}/residences/{residenceId}   ResidencesAPI.deleteResidence
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

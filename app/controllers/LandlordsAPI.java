@@ -50,19 +50,19 @@ public class LandlordsAPI extends Controller
   public static void updateLandlord(JsonElement body)
   {
     Landlord updatedLandlord = gson.fromJson(body.toString(), Landlord.class);
-    Landlord landlord = Landlord.findById(updatedLandlord.uuid);
+    Landlord landlord = Landlord.findById(updatedLandlord.id);
     landlord.update(updatedLandlord);
     landlord.save();
     renderJSON(gson.toJson(landlord));
   }
 
 
-  public static void deleteLandlord(String uuid)
+  public static void deleteLandlord(String id)
   {
-    Landlord landlord = Landlord.findById(uuid);
+    Landlord landlord = Landlord.findById(id);
     if (landlord == null)
     {
-      notFound("No Landlord with ID" + uuid);
+      notFound("No Landlord with ID" + id);
     }
     else
     {
@@ -84,7 +84,7 @@ public class LandlordsAPI extends Controller
       List<Residence> residences = landlord.residences;
       for(int j = 0; j < residences.size(); j += 1)
       {
-        Residence residence = Residence.findById(residences.get(j).uuid);
+        Residence residence = Residence.findById(residences.get(j).id);
         landlord.residences.remove(residence);
         landlord.save();
         residence.delete();   
