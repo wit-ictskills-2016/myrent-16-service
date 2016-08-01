@@ -23,7 +23,7 @@ public class LandlordsAPI extends Controller
     renderJSON(gson.toJson(Landlords));
   }
 
-  public static void getLandlorder(String id)
+  public static void getLandlord(String id)
   {
     Landlord landlord = Landlord.findById(id);
     if (landlord == null)
