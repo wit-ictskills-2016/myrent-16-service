@@ -5,22 +5,11 @@
 # Home page
 GET     /                                       Application.index
 
-# Landlord (the user)
-GET     /api/landlords                              LandlordsAPI.getAllLandlords
-GET     /api/landlords/{id}                         LandlordsAPI.getLandlord
-POST    /api/landlords                              LandlordsAPI.createLandlord
-PUT     /api/landlords                              LandlordsAPI.updateLandlord
-DELETE  /api/landlords/{id}                         LandlordsAPI.deleteLandlord
-DELETE  /api/landlords                              LandlordsAPI.deleteAllLandlords
-
 # Residence
 POST    /api/residence                                 ResidencesAPI.createResidence
-GET     /api/residences                                ResidencesAPI.getAllResidences
-DELETE  /api/residences                                ResidencesAPI.deleteAllResidences
-GET     /api/landlords/{id}/residences                 ResidencesAPI.getResidences
-GET     /api/landlords/{id}/residences/{residenceId}   ResidencesAPI.getResidence
-POST    /api/landlords/{id}/residences                 ResidencesAPI.createResidence
-DELETE  /api/landlords/{id}/residences/{residenceId}   ResidencesAPI.deleteResidence
+GET     /api/residences                                ResidencesAPI.getResidences
+DELETE  /api/residences/{id}                           ResidencesAPI.deleteResidence
+POST    /api/residence/update                          ResidencesAPI.updateResidence
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

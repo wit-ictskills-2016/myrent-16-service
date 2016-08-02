@@ -13,9 +13,6 @@ import play.db.jpa.GenericModel;
 
 @Entity
 public class Residence extends GenericModel {
-
-	@ManyToOne
-	public Landlord landlord;
 	
 	@Id
 	public String id;
@@ -31,15 +28,14 @@ public class Residence extends GenericModel {
 	 * 
 	 * @param other
 	 */
-//	public void update(Residence other) {
-//		//this.id = other.id;
-//		this.geolocation = other.geolocation;
-//		this.date = other.date;
-//		this.rented = other.rented;
-//		this.tenant = other.tenant;
-//		this.zoom = other.zoom;
-//		this.photo = other.photo;
-//	}
+	public void update(Residence other) {
+		this.geolocation = other.geolocation;
+		this.date = other.date;
+		this.rented = other.rented;
+		this.tenant = other.tenant;
+		this.zoom = other.zoom;
+		this.photo = other.photo;
+	}
 
 	/**
 	 * Copy constructor

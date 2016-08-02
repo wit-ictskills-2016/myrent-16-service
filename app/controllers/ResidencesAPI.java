@@ -1,4 +1,4 @@
-  package controllers;
+package controllers;
 
 import java.util.List;
 
@@ -7,15 +7,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 
 import models.Residence;
-import models.Landlord;
 import play.mvc.Controller;
-import utils.GsonStrategy;
 
 public class ResidencesAPI extends Controller
 {
 
   static Gson gson = new GsonBuilder()
-      .setExclusionStrategies(new GsonStrategy())
       .create();
 
  /**
@@ -23,71 +20,49 @@ public class ResidencesAPI extends Controller
   * @param id
   * @param body
   */
-  public static void createResidence(String id, JsonElement body)
+  public static void createResidence(JsonElement body)
   {
     Residence residence = gson.fromJson(body.toString(), Residence.class);
-    Landlord landlord = Landlord.findById(id);
-    landlord.residences.add(residence);
-    residence.landlord = landlord;
     residence.save();
     renderJSON(gson.toJson(residence)); 
   }
-
-//  public static void createResidence(JsonElement body)
-//  {
-//    Residence residence = gson.fromJson(body.toString(), Residence.class);
-//    Landlord landlord = Landlord.findById(id);
-//    landlord.residences.add(residence);
-//    residence.landlord = landlord;
-//    residence.save();
-//    renderJSON(gson.toJson(residence)); 
-//  }
   
-  public static void getAllResidences()
+  /**
+   * This is an update and differs from createResidence in that the 
+   * primary key (id) is used to retrieve the original residence which is then deleted and
+   * its place taken by the incoming modified residence.
+   * 
+   * @param body The modified residence
+   */
+   public static void updateResidence(JsonElement body)
+   {
+     Residence modifiedResidence = gson.fromJson(body.toString(), Residence.class);
+     Residence residence = Residence.findById(modifiedResidence.id);
+     if (residence != null) {
+    	 modifiedResidence.id = residence.id;
+	     residence.delete();     
+	     modifiedResidence.save();
+	     renderJSON(gson.toJson(modifiedResidence)); 
+     } else {
+    	 notFound();
+     }
+
+   }
+   
+  public static void getResidences()
   {
     List<Residence> residences = Residence.findAll();
     renderJSON(gson.toJson(residences));
   }
   
-  /**
-   * 
-   * @param id : The id of the landlord (the residence list owner)
-   */
-  public static void getResidences(String id)
-  {
-    Landlord landlord = Landlord.findById(id);
-    if (landlord == null)
-    {
-      notFound();
-    }
-    renderJSON(gson.toJson(landlord.residences));
-  }
- 
-  /**
-   * 
-   * @param id
-   * @param residenceId
-   */
-  public static void getResidence (String id, String residenceId)
-  {
-   Residence residence = Residence.findById(residenceId);
-   if (residence == null)
-   {
-     notFound();
-   }
-   else
-   {
-     renderJSON(gson.toJson(residence));
-   }
-  }
  /**
   *  
   * @param id
   * @param residenceId
   */
-  public static void deleteResidence(String id, String residenceId)
+  public static void deleteResidence(String id)
   {
-    Residence residence = Residence.findById(residenceId);
+    Residence residence = Residence.findById(id);
     if (residence == null)
     {
       notFound();
@@ -98,10 +73,5 @@ public class ResidencesAPI extends Controller
       renderText("success");
     }
   }
-  
-  public static void deleteAllResidences()
-  {
-    Residence.deleteAll();
-    renderText("success");
-  }  
+    
 }
