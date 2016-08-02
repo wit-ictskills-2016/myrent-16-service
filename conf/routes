@@ -5,7 +5,7 @@
 # Home page
 GET     /                                       Application.index
 
-# Landlorder (the user)
+# Landlord (the user)
 GET     /api/landlords                              LandlordsAPI.getAllLandlords
 GET     /api/landlords/{id}                         LandlordsAPI.getLandlord
 POST    /api/landlords                              LandlordsAPI.createLandlord
@@ -13,7 +13,8 @@ PUT     /api/landlords                              LandlordsAPI.updateLandlord
 DELETE  /api/landlords/{id}                         LandlordsAPI.deleteLandlord
 DELETE  /api/landlords                              LandlordsAPI.deleteAllLandlords
 
-# Tweet
+# Residence
+POST    /api/residence                                 ResidencesAPI.createResidence
 GET     /api/residences                                ResidencesAPI.getAllResidences
 DELETE  /api/residences                                ResidencesAPI.deleteAllResidences
 GET     /api/landlords/{id}/residences                 ResidencesAPI.getResidences

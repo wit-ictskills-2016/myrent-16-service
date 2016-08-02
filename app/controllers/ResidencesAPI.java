@@ -33,6 +33,16 @@ public class ResidencesAPI extends Controller
     renderJSON(gson.toJson(residence)); 
   }
 
+//  public static void createResidence(JsonElement body)
+//  {
+//    Residence residence = gson.fromJson(body.toString(), Residence.class);
+//    Landlord landlord = Landlord.findById(id);
+//    landlord.residences.add(residence);
+//    residence.landlord = landlord;
+//    residence.save();
+//    renderJSON(gson.toJson(residence)); 
+//  }
+  
   public static void getAllResidences()
   {
     List<Residence> residences = Residence.findAll();
