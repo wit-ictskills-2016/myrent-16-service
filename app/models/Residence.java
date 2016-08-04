@@ -16,7 +16,7 @@ import play.db.jpa.GenericModel;
 public class Residence extends GenericModel {
 	
 	@Id
-	public String id;
+	public String uuid;
 	public String geolocation;
 	public Long date;
 	public boolean rented;
@@ -25,7 +25,7 @@ public class Residence extends GenericModel {
 	public String photo;
 
 	public Residence() {
-	  id = UUID.randomUUID().toString();
+	  uuid = UUID.randomUUID().toString();
 	  geolocation = "";
 	  date = 0L;
 	  rented = false;
@@ -39,31 +39,9 @@ public class Residence extends GenericModel {
 	 * 
 	 * @param other
 	 */
-//	public void update(Residence other) {
-//		this.geolocation = other.geolocation;
-//		this.date = other.date;
-//		this.rented = other.rented;
-//		this.tenant = other.tenant;
-//		this.zoom = other.zoom;
-//		this.photo = other.photo;
-//	}
-
-	/**
-	 * Copy constructor
-	 * @param other
-	 */
-//	public Residence(Residence other) {
-//		this.id = other.id;
-//		this.geolocation = other.geolocation;
-//		this.date = other.date;
-//		this.rented = other.rented;
-//		this.tenant = other.tenant;
-//		this.zoom = other.zoom;
-//		this.photo = other.photo;
-//    }
 	
-	public static Residence findById(String id) {
-		return find("id", id).first();
+	public static Residence findByUuid(String uuid) {
+		return find("uuid", uuid).first();
 	}
 
 }

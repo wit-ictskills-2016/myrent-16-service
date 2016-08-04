@@ -37,9 +37,9 @@ public class ResidencesAPI extends Controller
    public static void updateResidence(JsonElement body)
    {
      Residence modifiedResidence = gson.fromJson(body.toString(), Residence.class);
-     Residence residence = Residence.findById(modifiedResidence.id);
+     Residence residence = Residence.findById(modifiedResidence.uuid);
      if (residence != null) {
-    	 modifiedResidence.id = residence.id;
+    	 modifiedResidence.uuid = residence.uuid;
 	     residence.delete();     
 	     modifiedResidence.save();
 	     renderJSON(gson.toJson(modifiedResidence)); 
