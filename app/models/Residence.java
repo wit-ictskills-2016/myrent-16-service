@@ -3,6 +3,7 @@ package models;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -14,9 +15,9 @@ import play.db.jpa.GenericModel;
 
 @Entity
 public class Residence extends GenericModel {
-	
+
 	@Id
-	public String uuid;
+	public Long id;
 	public String geolocation;
 	public Long date;
 	public boolean rented;
@@ -25,23 +26,35 @@ public class Residence extends GenericModel {
 	public String photo;
 
 	public Residence() {
-	  uuid = UUID.randomUUID().toString();
-	  geolocation = "";
-	  date = 0L;
-	  rented = false;
-	  tenant = "";
-	  zoom = 0;
-	  photo = "";
+		id = unsignedLong();
+		geolocation = "";
+		date = 0L;
+		rented = false;
+		tenant = "";
+		zoom = 0;
+		photo = "";
 	}
-	
+
 	/**
 	 * Update this Residence but leave id unchanged
 	 * 
 	 * @param other
 	 */
-	
+
 	public static Residence findByUuid(String uuid) {
 		return find("uuid", uuid).first();
 	}
 
+	/**
+	 * Generate a long greater than zero
+	 * 
+	 * @return Unsigned Long value greater than zero
+	 */
+	private Long unsignedLong() {
+		long rndVal = 0;
+		do {
+			rndVal = new Random().nextLong();
+		} while (rndVal <= 0);
+		return rndVal;
+	}
 }

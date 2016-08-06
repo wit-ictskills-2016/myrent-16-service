@@ -37,9 +37,9 @@ public class ResidencesAPI extends Controller
    public static void updateResidence(JsonElement body)
    {
      Residence modifiedResidence = gson.fromJson(body.toString(), Residence.class);
-     Residence residence = Residence.findById(modifiedResidence.uuid);
+     Residence residence = Residence.findById(modifiedResidence.id);
      if (residence != null) {
-    	 modifiedResidence.uuid = residence.uuid;
+    	 modifiedResidence.id = residence.id;
 	     residence.delete();     
 	     modifiedResidence.save();
 	     renderJSON(gson.toJson(modifiedResidence)); 
@@ -60,7 +60,7 @@ public class ResidencesAPI extends Controller
   * @param id
   * @param residenceId
   */
-  public static void deleteResidence(String id)
+  public static void deleteResidence(Long id)
   {
     Residence residence = Residence.findById(id);
     if (residence == null)
