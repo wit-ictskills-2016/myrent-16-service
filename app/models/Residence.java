@@ -41,8 +41,8 @@ public class Residence extends GenericModel {
 	 * @param other
 	 */
 
-	public static Residence findByUuid(String uuid) {
-		return find("uuid", uuid).first();
+	public static Residence findById(String id) {
+		return find("id", id).first();
 	}
 
 	/**
