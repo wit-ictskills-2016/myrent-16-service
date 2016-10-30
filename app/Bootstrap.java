@@ -9,7 +9,7 @@ public class Bootstrap extends Job
 { 
   public void doJob()
   {
-//    if (Tweet.count() == 0)
+//    if (Residence.count() == 0)
 //    {
 //     Fixtures.deleteDatabase(); 
 //     Fixtures.loadModels("data.yml");

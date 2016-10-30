@@ -8,6 +8,7 @@ GET     /                                       Application.index
 # Residence
 POST    /api/residence                                 ResidencesAPI.createResidence
 GET     /api/residences                                ResidencesAPI.getResidences
+GET     /api/residences/{id}                           ResidencesAPI.getResidence
 DELETE  /api/residences/{id}                           ResidencesAPI.deleteResidence
 POST    /api/residence/update                          ResidencesAPI.updateResidence
 

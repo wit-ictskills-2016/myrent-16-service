@@ -1,46 +1,35 @@
-Tweeter(tweeter3):
-  id: 0a721931-74a2-4d8e-b0a5-954b62437bd7
-  firstName: Tester2
-  lastName: Simpson
-  email: a
-  password: a
+Residence(residence_1):
+  id: 1234
   geolocation: "52.258136,-7.127810"
+  date: 1448196498688
+  rented: true
+  tenant: Homer
+  zoom: 12.0
+  photo: "photo 1"
+
+Residence(residence_2):
+  id: 1235
+  geolocation: "53.258136,-7.127810"
+  date: 1448196498765
+  rented: true
+  tenant: Barney
   zoom: 14.0
-  tweets: [tweet_3]
+  photo: "photo 2"
 
-Tweeter(tweeter1):
-  id: 1a721931-74a2-4d8e-b0a5-954b62437bd8
-  firstName: Homer J.
-  lastName: Simpson
-  email: homer@simpson.com
-  password: secret
-  geolocation: "52.260836,-7.133861"
-  zoom: 14.0
-  tweets: [tweet_1, tweet_2]
+Residence(residence_3):
+  id: 1236
+  geolocation: "52.258136,-8.127810"
+  date: 1448196498999
+  rented: true
+  tenant: Marge
+  zoom: 16.0
+  photo: "photo 3"
 
-Tweeter(tweeter2):
-  id: 2a721931-74a1-4d8e-b0a5-954b62437bd9
-  firstName: Barney
-  lastName: Gumble
-  email: barney@gumble.com
-  password: secret
-  geolocation: "52.253270,-7.127252"
-  zoom: 14.0
-
-Tweet(tweet_1):
-  id: 39f5b200-898f-11e5-b435-0002a5d5c51b
-  message: tweet_1
-  datestamp: 1448196498688
-  tweeter: tweeter1
- 
-Tweet(tweet_2):
-  id: 29fd10fd-76e8-4b12-9286-e9f2d6ae1e24
-  message: tweet_2
-  datestamp: 1448196498666
-  tweeter: tweeter1
-
-Tweet(tweet_3):
-  id: 49fd10fa-76e8-4b12-9286-e9f2d6ae1e24
-  message: tweet_3
-  datestamp: 1448196498999
-  tweeter: tweeter3
+Residence(residence_4):
+  id: 1237
+  geolocation: "52.258136,-7.127810"
+  date: 1448196498666
+  rented: true
+  tenant: Lisa
+  zoom: 18.0
+  photo: "photo 4"
