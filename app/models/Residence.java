@@ -35,34 +35,6 @@ public class Residence extends GenericModel {
 		photo = "";
 	}
 
-  /**
-   * Update this Residence but leave id unchanged
-   * 
-   * @param other
-   */
-  public void update(Residence other) {
-    this.geolocation = other.geolocation;
-    this.date = other.date;
-    this.rented = other.rented;
-    this.tenant = other.tenant;
-    this.zoom = other.zoom;
-    this.photo = other.photo;
-  }
-
-  /**
-   * Copy constructor
-   * @param other
-   */
-  public Residence(Residence other) {
-    this.id = other.id;
-    this.geolocation = other.geolocation;
-    this.date = other.date;
-    this.rented = other.rented;
-    this.tenant = other.tenant;
-    this.zoom = other.zoom;
-    this.photo = other.photo;
-}
-
 	public static Residence findById(Long id) {
 		return find("id", id).first();
 	}
