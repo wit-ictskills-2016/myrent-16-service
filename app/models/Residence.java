@@ -16,38 +16,39 @@ import play.db.jpa.GenericModel;
 @Entity
 public class Residence extends GenericModel {
 
-	@Id
-	public Long id;
-	public String geolocation;
-	public Long date;
-	public boolean rented;
-	public String tenant;
-	public double zoom;
-	public String photo;
+  @Id
+  public Long id;
+  public String geolocation;
+  public Long date;
+  public boolean rented;
+  public String tenant;
+  public double zoom;
+  public String photo;
 
-	public Residence() {
-		id = unsignedLong();
-		geolocation = "";
-		date = 0L;
-		rented = false;
-		tenant = "";
-		zoom = 0;
-		photo = "";
-	}
+  public Residence() {
+    id = unsignedLong();
+    geolocation = "";
+    date = 0L;
+    rented = false;
+    tenant = "";
+    zoom = 0;
+    photo = "";
+  }
 
-	public static Residence findById(Long id) {
-		return find("id", id).first();
-	}
+  public static Residence findById(Long id) {
+    return find("id", id).first();
+  }
 
-	/**
-	 * Generate a long greater than zero
-	 * @return Unsigned Long value greater than zero
-	 */
-	private Long unsignedLong() {
-		long rndVal = 0;
-		do {
-			rndVal = new Random().nextLong();
-		} while (rndVal <= 0);
-		return rndVal;
-	}
+  /**
+   * Generate a long greater than zero
+   * 
+   * @return Unsigned Long value greater than zero
+   */
+  private Long unsignedLong() {
+    long rndVal = 0;
+    do {
+      rndVal = new Random().nextLong();
+    } while (rndVal <= 0);
+    return rndVal;
+  }
 }
