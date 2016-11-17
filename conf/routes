@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET     /                                              ResidencesAPI.getResidences
 
 # Residence
 POST    /api/residence                                 ResidencesAPI.createResidence

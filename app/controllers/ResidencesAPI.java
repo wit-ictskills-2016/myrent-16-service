@@ -20,6 +20,8 @@ public class ResidencesAPI extends Controller {
    */
   public static void createResidence(JsonElement body) {
     Residence residence = gson.fromJson(body.toString(), Residence.class);
+    Residence res = new Residence();
+    residence.id = res.id;
     residence.save();
     renderJSON(gson.toJson(residence));
   }

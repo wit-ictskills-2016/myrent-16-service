@@ -1,5 +1,4 @@
 Residence(residence_1):
-  id: 1234
   geolocation: "52.258136,-7.127810"
   date: 1448196498688
   rented: true
@@ -8,7 +7,6 @@ Residence(residence_1):
   photo: "photo 1"
 
 Residence(residence_2):
-  id: 1235
   geolocation: "53.258136,-7.127810"
   date: 1448196498765
   rented: true
@@ -17,7 +15,6 @@ Residence(residence_2):
   photo: "photo 2"
 
 Residence(residence_3):
-  id: 1236
   geolocation: "52.258136,-8.127810"
   date: 1448196498999
   rented: true
@@ -26,7 +23,6 @@ Residence(residence_3):
   photo: "photo 3"
 
 Residence(residence_4):
-  id: 1237
   geolocation: "52.258136,-7.127810"
   date: 1448196498666
   rented: true
