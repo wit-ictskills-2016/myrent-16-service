@@ -28,8 +28,7 @@ public class ResidencesAPI extends Controller {
 
   /**
    * This is an update and differs from createResidence in that the primary key
-   * (id) is used to retrieve the original residence which is then deleted and
-   * its place taken by the incoming modified residence.
+   * (id) is used to retrieve the original residence which updated with the incoming residence's fields.
    * 
    * @param body
    *          The modified residence
@@ -38,10 +37,9 @@ public class ResidencesAPI extends Controller {
     Residence modifiedResidence = gson.fromJson(body.toString(), Residence.class);
     Residence residence = Residence.findById(modifiedResidence.id);
     if (residence != null) {
-      modifiedResidence.id = residence.id;
-      residence.delete();
-      modifiedResidence.save();
-      renderJSON(gson.toJson(modifiedResidence));
+      residence.update(modifiedResidence);
+      residence.save();
+      renderJSON(gson.toJson(residence));
     } else {
       notFound();
     }

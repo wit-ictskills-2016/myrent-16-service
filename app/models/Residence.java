@@ -32,6 +32,19 @@ public class Residence extends Model{
     photo = "";
   }
 
+  /**
+   * Update this residence by replacing all fields with those of other.
+   * @param other The residence whose fields (excluding the id) replaces existing.
+   */
+  public void update(Residence other) {
+	    geolocation = other.geolocation;
+	    date = other.date;
+	    rented = other.rented;
+	    tenant = other.tenant;
+	    zoom = other.zoom;
+	    photo = other.photo;
+  }
+  
   public static Residence findById(Long id) {
     return find("id", id).first();
   }

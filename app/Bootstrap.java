@@ -11,8 +11,8 @@ public class Bootstrap extends Job
   {
     if (Residence.count() == 0)
     {
-     Fixtures.deleteDatabase(); 
-     Fixtures.loadModels("data.yml");
+//     Fixtures.deleteDatabase(); 
+//     Fixtures.loadModels("data.yml");
     }
   }
 }
